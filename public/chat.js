@@ -1,6 +1,5 @@
-let socket = io.connect("http://localhost:7000/");
-//let socket = io.connect("https://obscure-ridge-56494.herokuapp.com/");
-
+//let socket = io.connect("http://localhost:7000/");
+let socket = io.connect("https://damp-reaches-69819.herokuapp.com/");
 let divVideoChatLobby = document.getElementById("video-chat-lobby");
 let divVideoChat = document.getElementById("video-chat-room");
 let joinButton = document.getElementById("join");
