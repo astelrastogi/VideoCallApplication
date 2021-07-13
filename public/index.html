@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Video Chat Application</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+        <link href="/styles.css" rel="stylesheet" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="shortcut icon" href="#">
+    </head>
+    <body onload="renderTime()">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-info mb-5 fixed-top">
+                <!-- <h3 class="p-3 text-white">AASTHA RASTOGI</h3> -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                    
+                    <li class="nav-item">
+                        <h5>
+                            <a style="color: white;" class="nav-link" id="displayTime" href="https://www.timeanddate.com/" target="_blank"></a>
+                        </h5>
+                    </li> 
+                </ul>
+                </div>
+            </nav>
+        </header>
+        <br>
+        <center>
+            <div id="video-chat-lobby">
+                <div>
+                    <img src="./photo.png" alt="" width="50%">
+                </div>
+                <br>
+                <input id="roomName" type="text" placeholder="Room Name" />
+                <!-- <button id="join">Join</button> -->
+                <br>
+                <button type="button" class="btn btn-info" style="width: 100%;" id="join">Join</button>
+    
+    
+            </div>
+        </center>
+        
+        <div id="video-chat-room">
+            <video id="user-video"></video>
+            <video id="peer-video"></video>
+        </div>
+        <div class="btn-group" id="btn-group" style="display: none;">
+            <button id="muteBtn">Mute</button>
+            <!-- <button id="hideCamBtn">Hide Camera</button>
+            <button id="leaveBtn">Leave</button> -->
+        </div>
+        <footer id="mainfooter" >
+            <div style="margin-top: 50;"></div>
+            <p>Copyright &copy; 2021 Aastha Rastogi</p>
+        </footer>
+    </body>
+    <!-- For socket.io front end -->
+    <script src="https://cdn.socket.io/3.0.5/socket.io.min.js"></script>
+    <!-- Linking js file -->
+    <script src="./chat.js"></script>
+    <!-- Linking time.js -->
+    <script src="./time.js"></script>
+</html>
