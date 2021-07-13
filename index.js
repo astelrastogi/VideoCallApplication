@@ -35,8 +35,7 @@ io.on("connection", (socket) => {
     let rooms = io.sockets.adapter.rooms;
     let room = rooms.get(roomName);
 
-    //room == undefined when no such room exists
-    if (room == undefined) {
+    if (room == undefined) { //when no such room exists
       socket.join(roomName);
       socket.emit("created");
     } else if (room.size == 1) {
@@ -50,28 +49,32 @@ io.on("connection", (socket) => {
     console.log(rooms);
   });
 
-  //Triggered when the person who joined the room is ready to communicate
+  // when the person who joined the room is ready to communicate
   socket.on("ready", function (roomName) {
-    socket.broadcast.to(roomName).emit("ready"); //Informs the other peer in the room
+    // informing the other peer in the room
+    socket.broadcast.to(roomName).emit("ready"); 
   });
 
-  //Triggered when server gets an icecandidate from a peer in the room
+  // when server gets an icecandidate from a peer in the room
 
   socket.on("candidate", function (candidate, roomName) {
     console.log(candidate);
-    socket.broadcast.to(roomName).emit("candidate", candidate); //Sends Candidate to the other peer in the room
+    // sending candidate to the other peer in the room
+    socket.broadcast.to(roomName).emit("candidate", candidate); 
   });
 
-  //Triggered when server gets an offer from a peer in the room
+  // when server gets an offer from a peer in the room
 
   socket.on("offer", function (offer, roomName) {
     console.log(offer);
-    socket.broadcast.to(roomName).emit("offer", offer); //Sends Offer to the other peer in the room
+    //sending offer to the other peer in room
+    socket.broadcast.to(roomName).emit("offer", offer); 
   });
 
-  //Triggered when server gets an answer from a peer in the room
+  // when server gets an answer from a peer in the room
 
   socket.on("answer", function (answer, roomName) {
-    socket.broadcast.to(roomName).emit("answer", answer); //Sends Answer to the other peer in the room
+    // answering to the other peer in the room
+    socket.broadcast.to(roomName).emit("answer", answer); 
   });
 });
